@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: tak-postgres
+    environment:
+      POSTGRES_USER: takbank
+      POSTGRES_PASSWORD: takbank
+      POSTGRES_DB: takwallet_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tak-network
+
+  redis:
+    image: redis:alpine
+    container_name: tak-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - tak-network
+
+
+networks:
+  tak-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
