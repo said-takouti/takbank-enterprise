@@ -21,7 +21,6 @@ services:
     networks:
       - tak-network
 
-
 networks:
   tak-network:
     driver: bridge
